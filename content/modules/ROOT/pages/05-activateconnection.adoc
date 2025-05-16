@@ -6,34 +6,72 @@ activated.
 Run the `+nmcli con up+` command to activate the static connection that
 you configured in the previous step:
 
-[source,bash,run]
+.Command
+[source,bash,subs="+macros,+attributes",role=execute]
 ----
 nmcli con up ethernet1
+----
+
+.Output
+[source,text]
+----
+Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/7)
 ----
 
 Run the following to check the ip address and dhcp settings are
 correctly configured.
 
-[source,bash,run]
+.Command
+[source,bash,subs="+macros,+attributes",role=execute]
 ----
-nmstatectl show enp7s0 | grep -A 10 ipv4
+nmstatectl show eth1 | grep -A 10 ipv4
 ----
 
-.configuredstatic
-image::../assets/configuredstatic.png[configuredstatic]
+.Output
+[source,text]
+----
+<< OUTPUT ABRIDGED >>
+  ipv4:
+    enabled: true
+    dhcp: false
+    address:
+    - ip: 192.168.122.110
+      prefix-length: 32
+    - ip: 192.168.122.228
+      prefix-length: 24
+  ipv6:
+    enabled: true
+    dhcp: true
+<< OUTPUT ABRIDGED >>
+----
 
 You can see that the address is configured with `+192.168.122.110/32+`
 with `+dhcp+` set to `+false+`, as expected.
 
 Enter the following to check the default gateway.
 
-[source,bash,run]
+.Command
+[source,bash,subs="+macros,+attributes",role=execute]
 ----
 nmstatectl show | grep -A 10 routes
 ----
 
-.defaultgw
-image::../assets/defaultgw.png[defaultgw]
+.Output
+[source,text]
+----
+routes:
+  running:
+  - destination: 0.0.0.0/0
+    next-hop-interface: eth1
+    next-hop-address: 192.168.122.1
+    metric: 10
+    table-id: 30400
+  - destination: 0.0.0.0/0
+    next-hop-interface: eth0
+    next-hop-address: 192.168.0.1
+    metric: 10
+<< OUTPUT ABRIDGED >>
+----
 
 The final step is to learn how to configure the DNS server addresses for
 the connection.
