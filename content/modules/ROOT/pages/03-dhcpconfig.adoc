@@ -9,23 +9,27 @@ vs. static connections,
 https://www.redhat.com/sysadmin/static-dynamic-ip-1[this article,window=read-later]
 provides a great background.
 
-You will configure a dynamic IP connection on *bastion*. You will use the
+You will configure a dynamic IP connection on *host1*. You will use the
 `+nmcli con+` command with some additional arguments to specify that you
 want to `+add+` a connection, assign a connection name, choose a network
 interface to assign the connection to, and specify the type type of
-device the interface uses. Below is an example of this command with each
-of the values explained:
+device the interface uses.
 
-.con add breakdown
-image::conAddBreakdown.png[con add breakdown]
+== Add a dynamic connection
 
 Run the command to configure this dynamic connection on *host1*:
 
 .Command
 [source,bash,subs="+macros,+attributes",role=execute]
 ----
-nmcli con add con-name ethernet1 ifname eth1 type ethernet
+nmcli con add con-name ethernet1 ifname enp2s0 type ethernet
 ----
+
+Below is an example of this command with each
+of the values explained:
+
+.nmcli Connection commmand explanation
+image::conAddBreakdown.png[con add breakdown]
 
 You should see a confirmation message similar to
 
@@ -40,6 +44,7 @@ connection without a specified address.
 
 The advantage of using `+nmcli+` is that configuration changes persist.
 
+== Check the configuration
 Let’s check that the configuration has changed.
 
 .Command
@@ -78,6 +83,6 @@ nmstatectl show eth1
 << OUTPUT ABRIDGED >>
 ----
 
-Some situations call for an IP that will not change over time, or a
-static IP. The next page will walk you through turning this dynamic
-connection into a static connection.
+`nmstatectl` is a tool that can be used to check the configuration of the network interfaces on a system. NMState is a library with an accompanying command line tools that manage host networking settings. NMState is a convenient way to capture network settings into an easily readable yaml file.
+
+Some situations call for an IP that will not change over time, or a static IP. The next page will walk you through turning this dynamic connection into a static connection.

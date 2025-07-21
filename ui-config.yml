@@ -5,8 +5,6 @@ antora:
   modules:
     - name: "01-introduction"
       label: "Introduction"
-    - name: "02-installnmstate"
-      label: "Installnmstate"
     - name: "03-dhcpconfig"
       label: "Dhcpconfig"
     - name: "04-staticconfig"

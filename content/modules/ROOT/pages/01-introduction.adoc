@@ -25,13 +25,13 @@ well as how they are configured, similar to the following:
 .Output
 [source,text]
 ----
-DEVICE  TYPE      STATE         CONNECTION
-eth0    ethernet  connected     System eth0
-lo      loopback  unmanaged     lo
-eth1    ethernet  disconnected  --
+DEVICE  TYPE      STATE                   CONNECTION
+enp1s0  ethernet  connected               Wired connection 1
+lo      loopback  connected (externally)  lo
+enp2s0  ethernet  disconnected            --
 ----
 
-This output shows that there are three devices: *eth0* and *eth1*
+This output shows that there are three devices: *enp1s0* and *enp2s0*
 (ethernet devices) as well as *lo* (the loopback device).
 
 Next, you will make your own connection on this host.
