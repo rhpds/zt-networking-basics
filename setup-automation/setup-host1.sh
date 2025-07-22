@@ -33,3 +33,5 @@
 #   tmux switch-client -t "$session_name" > /dev/null 2>&1
 # fi
 # EOF
+
+nmcli connection modify Wired\ connection\ 2 connection.autoconnect no

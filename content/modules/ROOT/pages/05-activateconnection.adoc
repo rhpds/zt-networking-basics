@@ -24,7 +24,7 @@ correctly configured.
 .Command
 [source,bash,subs="+macros,+attributes",role=execute]
 ----
-nmstatectl show eth1 | grep -A 10 ipv4
+nmstatectl show enp2s0 | grep -A 10 ipv4
 ----
 
 .Output
