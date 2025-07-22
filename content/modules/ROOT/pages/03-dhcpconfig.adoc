@@ -17,6 +17,9 @@ device the interface uses.
 
 == Add a dynamic connection
 
+.Add a dynamic connection
+[%collapsible]
+====
 Run the command to configure this dynamic connection on *host1*:
 
 .Command
@@ -44,13 +47,19 @@ connection without a specified address.
 
 The advantage of using `+nmcli+` is that configuration changes persist.
 
+====
+
 == Check the configuration
+
+.Check the configuration
+[%collapsible]
+====
 Let’s check that the configuration has changed.
 
 .Command
 [source,bash,subs="+macros,+attributes",role=execute]
 ----
-nmstatectl show eth1
+nmstatectl show enp2s0
 ----
 
 .Output
@@ -86,3 +95,5 @@ nmstatectl show eth1
 `nmstatectl` is a tool that can be used to check the configuration of the network interfaces on a system. NMState is a library with an accompanying command line tools that manage host networking settings. NMState is a convenient way to capture network settings into an easily readable yaml file.
 
 Some situations call for an IP that will not change over time, or a static IP. The next page will walk you through turning this dynamic connection into a static connection.
+
+====
