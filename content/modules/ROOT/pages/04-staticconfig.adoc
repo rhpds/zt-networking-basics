@@ -22,7 +22,7 @@ nmcli con modify ethernet1 ipv4.addresses 192.168.122.110
 
 This command has no expected output.
 
-NOTE: Modifying the ipv4 address field without specifying a subnet
+TIP: Modifying the ipv4 address field without specifying a subnet
 mask (also called a prefix) will default to `+/32+`, or only a single IP
 address. If you wish to add a different subnet mask, for example
 `+/24+`, append it to the IP address in the `+nmcli con modify+`
@@ -51,17 +51,11 @@ nmcli con modify ethernet1 ipv4.gateway 192.168.122.1
 
 This command has no expected output.
 
-NOTE: You can combine multiple modifications into a single command by
-appending each additional property you want to change. For example, this
-command would accomplish all of the changes from this page in one line:
+====
 
-.Command
-[source,bash,subs="+macros,+attributes",role=execute]
-----
-nmcli con modify ethernet1 ipv4.addresses 192.168.122.110 ipv4.gateway 192.168.122.1 ipv4.method manual
-----
+TIP: You can combine multiple modifications into a single command by appending each additional property you want to change. For example, this command would accomplish all of the changes from this page in one line: `+nmcli con modify ethernet1 ipv4.addresses 192.168.122.110 ipv4.gateway 192.168.122.1 ipv4.method manual+`
 
-This command has no expected output.
+====
 
 You now have a bare-bones connection with a static IP, so the next step
 will walk you through activating and testing it.

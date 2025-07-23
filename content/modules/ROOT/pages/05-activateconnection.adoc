@@ -37,8 +37,6 @@ nmstatectl show enp2s0 | grep -A 10 ipv4
     address:
     - ip: 192.168.122.110
       prefix-length: 32
-    - ip: 192.168.122.228
-      prefix-length: 24
   ipv6:
     enabled: true
     dhcp: true

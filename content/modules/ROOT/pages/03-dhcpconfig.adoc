@@ -62,37 +62,12 @@ Let’s check that the configuration has changed.
 nmstatectl show enp2s0
 ----
 
-.Output
-[source,text]
-----
-<< OUTPUT ABRIDGED >>
-- name: eth1
-  profile-name: ethernet1
-  type: ethernet
-  driver: ena
-  state: up
-  identifier: name
-  mac-address: 0A:57:E8:BB:D4:5F
-  permanent-mac-address: 0A:57:E8:BB:D4:5F
-  mtu: 9001
-  min-mtu: 128
-  max-mtu: 9216
-  wait-ip: any
-  ipv4:
-    enabled: true
-    dhcp: true
-    address:
-    - ip: 192.168.122.228
-      prefix-length: 24
-    auto-dns: true
-    auto-gateway: true
-    auto-routes: true
-    auto-route-table-id: 0
-    dhcp-send-hostname: true
-<< OUTPUT ABRIDGED >>
-----
+.nmstate Output
+image::nmstateoutput.png[nmstate output]
 
 `nmstatectl` is a tool that can be used to check the configuration of the network interfaces on a system. NMState is a library with an accompanying command line tools that manage host networking settings. NMState is a convenient way to capture network settings into an easily readable yaml file.
+
+`nmstate` can be installed on the system by running `+dnf install -y nmstate+`. In this lab nmstate is already installed.
 
 Some situations call for an IP that will not change over time, or a static IP. The next page will walk you through turning this dynamic connection into a static connection.
 
